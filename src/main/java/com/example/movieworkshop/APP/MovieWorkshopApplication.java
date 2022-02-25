@@ -21,7 +21,6 @@ public class MovieWorkshopApplication {
         SpringApplication.run(MovieWorkshopApplication.class, args);
 
 
-
     }
 
     @GetMapping("/")
@@ -43,6 +42,7 @@ public class MovieWorkshopApplication {
     public ArrayList<Movie> tenPopularitySorted() throws FileNotFoundException {
         return dh.randomList();
     }
+
 
     @GetMapping("/howManyWonAnAward")
     public int moviesWithAwards() throws FileNotFoundException {

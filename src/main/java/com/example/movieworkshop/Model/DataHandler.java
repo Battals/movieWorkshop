@@ -21,7 +21,7 @@ public class DataHandler {
 
     public String getFirst() throws IOException {
 
-        return converter(2).title;
+        return converter(1).title;
     }
 
     public String getRandom() throws FileNotFoundException {
@@ -35,7 +35,7 @@ public class DataHandler {
     public ArrayList<Movie> randomList() throws FileNotFoundException {
         Random rnd = new Random();
         for (int i = 0; i < 10; i++) {
-            randomPopularityList.add(converter(rnd.nextInt(100)));
+            randomPopularityList.add(converter(rnd.nextInt(1000)));
         }
         Collections.sort(randomPopularityList, new Comparator<Movie>() {
             @Override
@@ -50,18 +50,12 @@ public class DataHandler {
 
     public int awards() throws FileNotFoundException {
         Scanner sc = new Scanner(fil);
-        for (int i = 2; i < 1583; i++) {
+        for (int i = 2; i < 1584; i++) {
             if (converter(i).awards.equalsIgnoreCase("yes")) {
                 movieCounter++;
             }
         }
         return movieCounter;
-    }
-
-
-    public static void main(String[] args) throws FileNotFoundException {
-        DataHandler dh = new DataHandler();
-        System.out.println(dh.characterN("a",2));
     }
 
 
@@ -75,6 +69,7 @@ public class DataHandler {
     private Movie converter(int number) throws FileNotFoundException {
         Scanner convertScanner = new Scanner(fil);
         String movieLine = "";
+        convertScanner.nextLine();
         for (int i = 0; i != number; i++) {
             movieLine = convertScanner.nextLine();
         }
@@ -96,21 +91,21 @@ public class DataHandler {
         int counter = 0;
         int y = 2;
         while (sc.hasNextLine()) {
-            if (converter(y).title.toLowerCase(Locale.ROOT).contains(x)){
+            if (converter(y).title.toLowerCase(Locale.ROOT).contains(x)) {
                 String titel = converter(y).title;
-                for (int i = 0; i < titel.length(); i++){
-                    if (String.valueOf(titel.charAt(i)).equalsIgnoreCase(x)){
+                for (int i = 0; i < titel.length(); i++) {
+                    if (String.valueOf(titel.charAt(i)).equalsIgnoreCase(x)) {
                         counter++;
                     }
-                    if (counter == n){
+                    if (counter == n) {
                         aList.add(converter(y));
                     }
                 }
             }
 
-            }
-        return aList;
         }
-
-
+        return aList;
     }
+
+
+}
